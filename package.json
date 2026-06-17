@@ -9,17 +9,18 @@
     "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Vijeta Sobhwani",
   "description": "",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.0.1",
     "@mui/material": "^9.0.1",
-    "@mui/x-data-grid-premium": "^9.4.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "@mui/x-data-grid-premium": "^8.18.0",
+    "@mui/x-license": "^8.18.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.2.1",

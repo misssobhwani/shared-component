@@ -1,24 +1,26 @@
-/// <reference types="vite/client" />
-import React from 'react';
-import type { Preview, Decorator } from '@storybook/react-vite';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { LicenseInfo } from '@mui/x-license';
-import { theme } from '../src/theme/theme';
-
-LicenseInfo.setLicenseKey(import.meta.env?.VITE_MUI_LICENSE_KEY ?? '');
-
-const withMuiTheme: Decorator = (Story) => (
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <Story />
-  </ThemeProvider>
-);
+ import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import type { Preview } from '@storybook/react';
+import theme from '../src/theme';
 
 const preview: Preview = {
-  decorators: [withMuiTheme],
   parameters: {
-    controls: { matchers: { color: /(background|color)$/i } },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default preview;
