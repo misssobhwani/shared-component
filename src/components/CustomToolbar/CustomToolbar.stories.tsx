@@ -1,8 +1,8 @@
-import React from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { GridColDef } from '@mui/x-data-grid-premium';
 import { StripedDataGrid } from '../StripedDataGrid/StripedDataGrid';
-import { CustomToolbar } from './CustomToolbar';
+import { CustomToolbar, type CustomToolbarProps } from './CustomToolbar';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -19,6 +19,19 @@ const rows = [
   { id: 4, product: 'Thingamajig', category: 'Gadgets', units: 45, revenue: 4050 },
   { id: 5, product: 'Contraption Z', category: 'Parts', units: 310, revenue: 930 },
 ];
+
+function GridWithToolbar(args: CustomToolbarProps) {
+  return (
+    <StripedDataGrid
+      rows={rows}
+      columns={columns}
+      autoHeight
+      showToolbar
+      slots={{ toolbar: CustomToolbar }}
+      slotProps={{ toolbar: args as any }}
+    />
+  );
+}
 
 const meta: Meta<typeof CustomToolbar> = {
   title: 'Components/CustomToolbar',
@@ -37,27 +50,22 @@ const meta: Meta<typeof CustomToolbar> = {
     showFilter: { control: 'boolean', description: 'Show filter panel toggle' },
     title: { control: 'text', description: 'Optional table title in the toolbar' },
   },
-  decorators: [
-    (Story, ctx) => (
-      <StripedDataGrid
-        rows={rows}
-        columns={columns}
-        autoHeight
-        slots={{ toolbar: () => <Story {...ctx.args} /> }}
-      />
-    ),
-  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof CustomToolbar>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  render: (args) => <GridWithToolbar {...args} />,
+};
 
 export const TitleOnly: Story = {
   args: { showSearch: false, showExport: false, showColumns: false, showFilter: false },
+  render: (args) => <GridWithToolbar {...args} />,
 };
 
 export const SearchOnly: Story = {
   args: { showExport: false, showColumns: false, showFilter: false, title: '' },
+  render: (args) => <GridWithToolbar {...args} />,
 };
+

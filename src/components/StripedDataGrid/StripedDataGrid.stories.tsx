@@ -141,7 +141,7 @@ type Story = StoryObj<typeof StripedDataGrid<Row>>;
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const Basic: Story = {
-  name: '1. Basic grid',
+  name: 'Basic grid',
   parameters: {
     docs: {
       description: {
@@ -162,7 +162,7 @@ The simplest possible usage — just rows and columns.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const WithBuiltInToolbar: Story = {
-  name: '2a. Toolbar — built-in (showToolbar)',
+  name: 'Toolbar — built-in (showToolbar)',
   args: {
     showToolbar: true,
   },
@@ -183,7 +183,7 @@ Density, and Export automatically, no extra component needed.
 };
 
 export const WithCustomToolbar: Story = {
-  name: '2b. Toolbar — custom (matches your screenshot)',
+  name: 'Toolbar — custom',
   args: {
     slots: {
       toolbar: () => <SimpleGridToolbar onExport={() => alert('Export clicked')} />,
@@ -223,7 +223,7 @@ trying to extend \`SimpleGridToolbar\`.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const Grouped: Story = {
-  name: '3. Grouping with totals',
+  name: 'Grouping with totals',
   args: {
     rows: groupedRows,
     initialState: {
@@ -263,7 +263,7 @@ Group any column via \`initialState.rowGrouping\`, add a totals row via
 };
 
 export const GroupedWithToolbar: Story = {
-  name: '4. Grouping + toolbar together',
+  name: 'Grouping + toolbar together',
   args: {
     rows: groupedRows,
     initialState: {
